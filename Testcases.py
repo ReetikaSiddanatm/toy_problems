@@ -8,23 +8,26 @@ class Testcases:
     def test(self):
         gets = lru(5)
         gets.put("Reetika")
-        assert gets.get("Reetika") == "Reetika","Testcase failed" 
+        assert gets.get("Reetika") == "HelloReetika","Testcase failed" 
         print("Testcase1 Passed")
         
         gets.put("Sandhya")
-        assert gets.get("Sandhya") == "Sandhya","Failed" 
+        assert gets.get("Sandhya") == "HelloSandhya","Failed" 
         print("Testcase2 Passed")
         
-        
         gets.put("Karthik")
-        assert gets.get("Karthik") == "Karthik" ,"Failed" 
+        assert gets.get("Karthik") == "HelloKarthik" ,"Failed" 
         print("Testcase3 Passed")
         gets.put("Koushik")
-        gets.put("Priyanka")
+        gets.put("Priya")
         gets.put("Sravya")
-        
-        assert gets.get("Reetika") ==None ,"Failed"
+              
+        assert gets.get("Reetika") == None ,"Failed"
         print("All test cases passed")
+        
+        lists = gets.get_cache()
+        for i in lists:
+            print(i)
         
         
 if __name__  == "__main__":
