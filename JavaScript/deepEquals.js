@@ -1,5 +1,8 @@
 function deepEquals(R, S) {
-    if (R === S) return true;
+    if (Object.keys(R).length == Object.keys(S).length) 
+      return true;
+    if (Object.keys(R).length != Object.keys(S).length)
+      return false;
     if (R == null || typeof R != "object" || S == null || typeof S != "object" )
     return false;
     var propsInR = 0;
