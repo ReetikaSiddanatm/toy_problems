@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+    background-image: url("bk.jpg");
+  margin: 0;
+  
+}
+.list{
+    margin-left:auto;
+    margin-right: auto;
+    width:600px;
+    height:100px;
+}
+
+
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 8px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+ 
+}
+
+
+ul li.checked {
+  background:seagreen;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+
+.header {
+  background-color:blue;
+  padding: 20px 20px;
+  color: white;
+  align-items: center;
+  width:auto;
+}
+
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 25%;
+  padding: 10px;
+  float: center;
+  font-size: 16px;
+}
+
+
+.addBtn {
+  padding: 10px;
+  width: 15%;
+  background:palevioletred;
+  color:white;
+  float: right;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: blue;
+}
+</style>
+</head>
+<body>
+        <h2 style="text-align:center">To Do List</h2>
+        <div class="list">
+                <div id="myDIV" class="header" style="padding-left:200px">
+  
+                        <input type="text" id="Input" placeholder="Title..." style="width:auto">
+                        <span onclick="addingnewElement()" class="addBtn">Add</span>
+                      </div>
+                      
+                      <ul id="myUL">
+                        <li>Search page</li>
+                        <li>Integrating the pages</li>
+                        <li>Java Script</li>
+                        <li>Soft Skills </li>
+                        <li>CP Problems</li>
+                        <li>IT Tasks</li>
+                      </ul>
+        </div>
+
+
+<script>
+// Create a "close" button and append it to each list item
+
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+
+
+// Create a new list item when clicking on the "Add" button
+
+
+function addingnewElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("Input").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Give  some task here!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("Input").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
